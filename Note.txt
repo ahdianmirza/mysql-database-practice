@@ -56,4 +56,97 @@ ENUM('Programmer','Zaman','Now') : hanya bisa menerima data Programmer, Zaman, a
 
 =====================================================
 
-*Tipe Data Date dan Time
+Tipe Data Date dan Time
+DATE (YYYY-MM-DD) : sampai ke tanggal
+DATETIME (YYYY-MM-DD HH:MM:SS)
+TIMESTAMP (YYYY-MM-DD HH:MM:SS) : untuk informasi tambahan
+TIME (HH:MM:SS)
+YEAR (YYYY)
+
+=====================================================
+
+TIPE DATA BOOLEAN
+TRUE
+FALSE
+
+=====================================================
+
+TIPE DATA LAINNYA
+BLOB
+SPATIAL
+JSON
+SET
+
+=====================================================
+
+TABLE
+*Storage Engine
+cara melakukan pengolahan data. Saat ini, yang biasa dan populer digunakan adalah InnoDB.
+
+*Melihat engines di MySQL
+SHOW ENGINES;
+
+*Melihat Table
+show tables;
+
+*Membuat Table
+create table barang
+(
+  kode   INT,
+  nama   VARCHAR(100),
+  harga  INT,
+  jumlah INT
+) engine = InnoDB;
+
+*Melihat Struktur Table
+describe nama_table;
+desc nama_table;
+show create table nama_table;
+
+*Mengubah Table
+alter table barang
+    add column nama_column text,
+    drop column nama,
+    rename column nama to nama_baru,
+    modify nama varchar(100) after jumlah,
+    modify nama varchar(100) first;
+
+*Null Value
+
+*Default Value
+alter table barang
+modify jumlah int not null default 0;
+
+alter table barang
+modify harga int not null default 0;
+
+alter table barang
+add waktu_dibuat timestamp not null default current_timestamp;
+
+*Membuat Ulang Table
+truncate nama_table;
+
+*Menghapus Table
+DROP TABLE nama_table;
+
+=====================================================
+
+INSERT DATA
+*Memasukkan Data
+INSERT INTO products(id, name, price, quantity)
+VALUES ('P0001', 'Mie Ayam Original', 15000, 100);
+
+SELECT * FROM products;
+
+INSERT INTO products(id, name, description, price, quantity)
+VALUES ('P0002', 'Mie Ayam Baso', 'Mie Ayam Original + Baso', 20000, 100);
+
+*Memasukkan Beberapa Data Sekaligus
+INSERT INTO products(id, name, price, quantity)
+VALUES ('P0003', 'Mie Ayam Ceker', 20000, 100),
+       ('P0004', 'Mie Ayam Spesial', 25000, 100),
+       ('P0005', 'Mie Ayam Yamin', 15000, 100);
+
+=====================================================
+
+SELECT DATA
