@@ -1,0 +1,59 @@
+DATABASE
+*Melihat semua database di MySQL
+show databases;
+
+*Membuat database
+create database nama_database;
+
+*Menghapus database
+drop database nama_database;
+
+*Memilih database
+use nama_database;
+
+=====================================================
+
+TIPE DATA
+*Tipe data per Kolom
+number, text
+
+=====================================================
+
+TIPE DATA NUMBER
+*Tipe Data Integer
+TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT
+
+*Tipe Data Floating Point
+FLOAT, DOUBLE
+
+*Tipe Data Decimal
+DECIMAL(5,2) => -999.99 - 999.99
+DECIMAL(5,0) => -99999 - 99999
+DECIMAL(3,2) => -99.9 - 99.9
+DECIMAL(3) => -999 - 999
+
+*Number Attribute
+TYPE(N)
+ZEROFILL
+
+=====================================================
+
+TIPE DATA STRING
+*CHAR dan VARCHAR
+CHAR : ukuran size sudah ditentukan di awal
+VARCHAR : ukuran bergantung dengan isi dari huruf yang masuk
+
+*TEXT
+TEXT sudah memiliki panjang maksimum.
+TINYTEXT (256 bytes)
+TEXT (64 kb)
+MEDIUMTEXT (16 MB)
+LONGTEXT (4 GB)
+
+*ENUM
+ENUM('Pria','Wanita') : hanya bisa menerima data Pria atau Wanita
+ENUM('Programmer','Zaman','Now') : hanya bisa menerima data Programmer, Zaman, atau Now
+
+=====================================================
+
+*Tipe Data Date dan Time
