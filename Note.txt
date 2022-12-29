@@ -150,3 +150,141 @@ VALUES ('P0003', 'Mie Ayam Ceker', 20000, 100),
 =====================================================
 
 SELECT DATA
+SELECT * FROM products;
+SELECT id, name, price, quantity FROM products;
+SELECT name, quantity, id FROM products;
+
+=====================================================
+
+PRIMARY KEY
+CREATE TABLE products(
+id VARCHAR(10) NOT NULL,
+name VARCHAR(100) NOT NULL,
+description TEXT,
+price INT UNSIGNED NOT NULL,
+quantity INT UNSIGNED NOT NULL DEFAULT 0,
+created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+PRIMARY KEY (id)
+) ENGINE = InnoDB;
+
+ALTER TABLE products
+ADD PRIMARY KEY (id);
+
+=====================================================
+
+WHERE CLAUSE
+SELECT id, name, price, quantity FROM products
+WHERE quantity = 0;
+
+=====================================================
+
+UPDATE DATA
+ALTER TABLE products
+ADD COLUMN category ENUM ('Makanan', 'Minuman', 'Lain-Lain') AFTER name;
+
+*Mengubah Satu Kolom
+UPDATE products
+SET category = 'Makanan'
+WHERE id = 'P0001';
+
+*Mengubah Beberapa Kolom
+UPDATE products
+SET category = 'Makanan',
+    description = 'Mie Ayam Original + Ceker'
+WHERE id = 'P0003';
+
+*Mengubah Dengan Value di Kolom
+UPDATE products
+SET price = price + 5000
+WHERE id = 'P0004';
+
+=====================================================
+
+DELETE DATA
+DELETE FROM products
+WHERE id = 'P0009';
+
+=====================================================
+
+ALIAS
+Untuk mengubah nama kolom atau nama tabel ketikan melakukan SELECT data
+
+*Alias Untuk Kolom
+SELECT id AS 'Kode',
+       name AS 'Nama',
+       category AS 'Kategori',
+       price AS 'Harga',
+       quantity AS 'Jumlah'
+FROM products;
+
+*Alias Untuk Table
+SELECT p.id AS 'Kode',
+       p.name AS 'Nama',
+       p.category AS 'Kategori',
+       p.price AS 'Harga',
+       p.quantity AS 'Jumlah'
+FROM products AS p;
+
+=====================================================
+
+WHERE OPERATOR
+*Operator Perbandingan
+= : Sama dengan
+<> atau != : Tidak sama dengan
+< : Kurang dari
+<= : Kurang dari atau sama dengan
+> : Lebih dari
+>= : Lebih dari atau sama dengan
+
+*Mencari Data dengan Operator Perbandingan
+SELECT * FROM products
+WHERE quantity > 100;
+
+*AND dan OR Operator
+SELECT * FROM products
+WHERE quantity > 100 AND price > 20000;
+
+SELECT * FROM products
+WHERE quantity > 100 OR price > 20000;
+
+*Prioritas dengan Kurung ()
+SELECT * FROM products
+WHERE (category = 'Makanan' OR quantity > 500) AND price > 20000;
+
+*LIKE Operator
+Digunakan untuk mencari sebagian data dalam String
+Cocok untuk mencari sebagian kata dalam String
+Tidak disarankan jika datanya sudah terlalu besar karena sangat lambat
+
+LIKE 'b%' : String dengan awalan b
+LIKE '%a' : String dengan akhiran a
+LIKE '%ahdian%' : String berisi ahdian
+NOT LIKE : Tidak LIKE
+
+SELECT * FROM products
+WHERE name LIKE '%mie%';
+
+*NULL Operator
+SELECT * FROM products
+WHERE description IS NULL;
+
+SELECT * FROM products
+WHERE description IS NOT NULL;
+
+*BETWEEN Operator
+Untuk mencari data yang >= dan <= secara sekaligus
+
+SELECT * FROM products
+WHERE price BETWEEN 10000 AND 20000;
+
+SELECT * FROM products
+WHERE price NOT BETWEEN 10000 AND 20000;
+
+*IN Operator
+Untuk melakukan pencarian sebuah kolom dengan beberapa nilai
+
+SELECT * FROM products
+WHERE category IN ('Makanan', 'Minuman');
+
+SELECT * FROM products
+WHERE category NOT IN ('Makanan', 'Minuman');
